@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Control Roboto</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+
+    <div class="menu">
+        <div class="menu-item">Settings</div>
+        <div class="menu-item">Calibrate</div>
+        <div class="menu-item">Help</div>
+    </div>
+    <div class="main-content">
+        <div class="graphical-painting"></div>
+        <div class="data-box">
+            <div class="sensor-labels">
+                <div id="sensor1" class="sensor-label">Sensor 1</div>
+                <div  id="sensor2" class="sensor-label">Sensor 2</div>
+                <div  id="sensor3" class="sensor-label">Sensor 3</div>
+                <div  id="sensor4" class="sensor-label">Sensor 4</div>
+                <div  id="sensor5" class="sensor-label">Sensor 5</div>
+                <div  id="sensor6" class="sensor-label">Sensor 6</div>
+                <div  id="sensor7" class="sensor-label">Sensor 7</div>
+            </div>
+            <div class="button-box">
+                <div class="checkbox-wrapper">
+                    <input id="toggle" type="checkbox">
+                    <label for="toggle"></label>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('message', function(data) {
+            var chat = document.getElementById('chat');
+            chat.innerHTML += data + '<br>';
+        });
+
+        document.addEventListener("keypress", function(event) {
+            let manual_control_box = document.getElementById('toggle');
+            if (manual_control_box.checked) {
+                if (event.keyCode == 119) {
+                socket.emit('control_command', 'up')
+                } else if (event.keyCode == 97) {
+                    socket.emit('control_command', 'left')
+                } else if (event.keyCode == 100) {
+                    socket.emit('control_command', 'right')
+                } else if (event.keyCode == 115) {
+                    socket.emit('control_command', 'down')
+                }
+            } 
+        });
+    </script>
+
+    <script>
+
+        socket.on('sensorData', function(data) {
+            document.getElementById('sensor1').innerHTML = "Sensor 1: " +  data[0];
+            document.getElementById('sensor2').innerHTML = "Sensor 2: " +  data[1];
+            document.getElementById('sensor3').innerHTML = "Sensor 3: " +  data[2];
+            document.getElementById('sensor4').innerHTML = "Sensor 4: " +  data[3];
+            document.getElementById('sensor5').innerHTML = "Sensor 5: " +  data[4];
+            document.getElementById('sensor6').innerHTML = "Sensor 6: " +  data[5];
+            document.getElementById('sensor7').innerHTML = "Sensor 7: " +  data[6];
+
+        
+
+            
+
+        });
+
+        function infiniteLoop(delay) {
+        function loop() {
+        // Your code to be executed in the loop
+        socket.emit('sensorData')
+    
+        console.log("Loop iteration");
+
+        // Schedule the next iteration
+        setTimeout(loop, delay);
+        }
+
+        // Start the infinite loop
+        loop();
+        }
+
+        // Usage:
+        infiniteLoop(1000); // This will create an infinite loop with a 1-second delay between each iteration
+
+    </script>
+
+
+</body>
+</html>

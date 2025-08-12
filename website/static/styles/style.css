@@ -1,0 +1,150 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    background: #333;
+    color: #c9c9c9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu-item {
+    margin: 0 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #bfbfbf;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.graphical-painting {
+    width: 60%;
+    height: 400px;
+    background: linear-gradient(to bottom, #0074D9, #00A99D);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.data-box {
+    display: flex;
+    width: 60%;
+}
+
+.sensor-labels {
+    flex: 1;
+    padding: 10px;
+}
+
+.sensor-label {
+    font-size: 16px;
+    margin: 10px;
+    color: #333;
+}
+
+.button-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.action-button {
+    margin: 10px;
+    padding: 15px 30px;
+    background: #0074D9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.action-button:hover {
+    background: #005EA8;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper *::before,
+.checkbox-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper label {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 50px 20px 0 rgba(0,0,0,0.1);
+    display: flex;
+    height: 50px;
+    padding: 8px;
+    position: relative;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+    width: 116px;
+}
+
+.checkbox-wrapper input {
+    display: none;
+}
+
+.checkbox-wrapper label:after {
+    animation: move-left-36 400ms;
+    background: #E2E2E2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='27' viewBox='0 0 24 24'%3E%3Cpath stroke='#E2E2E2' fill='#E2E2E2' stroke-linecap='round' d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E") no-repeat center;
+    border-radius: 12px;
+    content: '';
+    left: 8px;
+    outline: none;
+    position: absolute;
+    transition: background 100ms linear;
+    width: 36px;
+    height: 36px;
+    left: 8px;
+    top: 7px;
+}
+
+.checkbox-wrapper label:active {
+    box-shadow: 0px 10px 20px 0 rgba(0,0,0,0.2);
+    transform: scale(1.15);
+}
+
+.checkbox-wrapper input:checked + label:after {
+    animation: move-right-36 400ms;
+    background: #6EB54E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='27' viewBox='0 0 24 24'%3E%3Cpath stroke='white' fill='white' stroke-linecap='round' d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E") no-repeat center;
+    left: 72px;
+}
+
+@keyframes move-right-36 {
+    0% {
+    left: 8px;
+    }
+    75% {
+    left: 78px;
+    }
+    100% {
+    left: 72px;
+    }
+}
+
+@keyframes move-left-36 {
+    0% {
+    left: 72px;
+    }
+    75% {
+    left: 2px;
+    }
+    100% {
+    left: 8px;
+    }
+}

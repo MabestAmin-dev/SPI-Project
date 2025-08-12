@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <script>
+        function testMatrix() {
+            var matrix = [];
+            for (var i = 0; i < 25; i++) {
+                matrix[i] = [];
+                for (var j = 0; j < 25; j++) {
+                    matrix[i][j] = undefined;
+                }
+            }
+
+            matrix[12][12] = ["node", "", "", "node"];
+            matrix[12][13] = ["", "node", "", "node"];
+            matrix[13][12] = ["node", "", "node", ""];
+            matrix[13][13] = ["", "node", "node", ""];
+            matrix[16][16] = ["", "node", "node", "node"];
+
+            return matrix;
+        }
+        
+
+        matrix = testMatrix();
+
+
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var cellSize = 24;
+        var matrixScale = 1;
+
+        canvas.width = 25 * cellSize * matrixScale;
+        canvas.height = 25 * cellSize * matrixScale;
+
+        var colors = {
+            undefinedColor: "gray",
+            pathColor: "white",
+            borderColor: "black"
+        };
+
+        function drawMatrix() {
+            for (var i = 0; i < 25; i++) {
+                for (var j = 0; j < 25; j++) {
+                    var x = j * cellSize * matrixScale;
+                    var y = i * cellSize * matrixScale;
+    
+                    if (matrix[i][j]) {
+                        var [right, left, up, down] = matrix[i][j];
+                        ctx.fillStyle = colors.pathColor;
+                        ctx.fillRect(x, y, cellSize * matrixScale, cellSize * matrixScale);
+    
+                        ctx.fillStyle = colors.borderColor;
+                        if (right === "") {
+                            ctx.fillRect(x + cellSize * matrixScale - 2, y, 2, cellSize * matrixScale);
+                        }
+                        if (left === "") {
+                            ctx.fillRect(x, y, 2, cellSize * matrixScale);
+                        }
+                        if (up === "") {
+                            ctx.fillRect(x, y, cellSize * matrixScale, 2);
+                        }
+                        if (down === "") {
+                            ctx.fillRect(x, y + cellSize * matrixScale - 2, cellSize * matrixScale, 2);
+                        }
+                    } else {
+                        ctx.fillStyle = colors.undefinedColor;
+                        ctx.fillRect(x, y, cellSize * matrixScale, cellSize * matrixScale);
+                    }
+                }
+            }
+        }
+
+
+        drawMatrix()
+    </script>
+</body>
+</html>

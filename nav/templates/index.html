@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Control Roboto</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+
+    <div class="menu">
+        <div class="menu-item">Settings</div>
+        <div class="menu-item">Calibrate</div>
+        <div class="menu-item">Help</div>
+    </div>
+    <div class="main-content">
+        <div class="graphical-painting">
+            <canvas id="myCanvas" width="600" height="600"></canvas>
+        </div>
+        <div class="data-box">
+            <div class="sensor-labels">
+                <div id="sensor1" class="sensor-label">Front Left</div>
+                <div  id="sensor2" class="sensor-label">Front Right</div>
+                <div  id="sensor3" class="sensor-label">Back Left</div>
+                <div  id="sensor4" class="sensor-label">Back Right</div>
+                <div  id="sensor5" class="sensor-label">Fron</div>
+                <div  id="sensor6" class="sensor-label">Back</div>
+                <div  id="sensor7" class="sensor-label">Gyro</div>
+                <div  id="sensor8" class="sensor-label">Reflex</div>
+            </div>
+            <div class="button-box">
+                <div class="checkbox-wrapper">
+                    <input id="toggle" type="checkbox">
+                    <label for="toggle"></label>
+                  </div>
+            </div>
+            <div class="checkbox-wrapper-55">
+                <label class="rocker rocker-small">
+                    <input id="claw" type="checkbox">
+                    <span class="switch-left">Yes</span>
+                    <span class="switch-right">No</span>
+                </label>
+            </div>  
+            
+            <div class="input-container">
+                <input type="text" id="input1" placeholder="Input P">
+                <button onclick="submitInput(1)">Submit P</button>
+            </div>
+            <div class="input-container">
+                <input type="text" id="input2" placeholder="Input D">
+                <button onclick="submitInput(2)">Submit D</button>
+            </div>
+
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+
+    <!-- <script>
+        function submitInput(inputNumber) {
+            // Get the input value based on the input number
+            const inputValue = document.getElementById(`input${inputNumber}`).value;
+            // Do something with the input value (e.g., display, process, etc.)
+            console.log(`Input ${inputNumber} value:`, inputValue);
+            // You can add further processing or actions here
+        }
+    </script> -->
+</body>
+</html>

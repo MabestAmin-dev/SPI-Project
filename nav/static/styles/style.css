@@ -1,0 +1,308 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    background: #333;
+    color: #c9c9c9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu-item {
+    margin: 0 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+    background: #bfbfbf;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.graphical-painting {
+    flex: 1; /* Make it take up all available space */
+    background: linear-gradient(to bottom, #0074D9, #00A99D);
+    margin: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+canvas#myCanvas {
+    max-width: 100%;
+    max-height: 100%;
+    /* border: 2px solid black; Optional: Add a border to the canvas */
+}
+
+.data-box {
+    flex: 1; /* Add this to make it take up the available space on the right */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Rest of your CSS styles remain the same */
+
+
+.sensor-labels {
+    flex: 1;
+    padding: 10px;
+}
+
+.sensor-label {
+    font-size: 16px;
+    margin: 10px;
+    color: #333;
+}
+
+.button-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.action-button {
+    margin: 10px;
+    padding: 15px 30px;
+    background: #0074D9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.action-button:hover {
+    background: #005EA8;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper *::before,
+.checkbox-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper label {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 50px 20px 0 rgba(0,0,0,0.1);
+    display: flex;
+    height: 50px;
+    padding: 8px;
+    position: relative;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+    width: 116px;
+}
+
+.checkbox-wrapper input {
+    display: none;
+}
+
+.checkbox-wrapper label:after {
+    animation: move-left-36 400ms;
+    background: #E2E2E2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='27' viewBox='0 0 24 24'%3E%3Cpath stroke='#E2E2E2' fill='#E2E2E2' stroke-linecap='round' d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E") no-repeat center;
+    border-radius: 12px;
+    content: '';
+    left: 8px;
+    outline: none;
+    position: absolute;
+    transition: background 100ms linear;
+    width: 36px;
+    height: 36px;
+    left: 8px;
+    top: 7px;
+}
+
+.checkbox-wrapper label:active {
+    box-shadow: 0px 10px 20px 0 rgba(0,0,0,0.2);
+    transform: scale(1.15);
+}
+
+.checkbox-wrapper input:checked + label:after {
+    animation: move-right-36 400ms;
+    background: #6EB54E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='27' viewBox='0 0 24 24'%3E%3Cpath stroke='white' fill='white' stroke-linecap='round' d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E") no-repeat center;
+    left: 72px;
+}
+
+@keyframes move-right-36 {
+    0% {
+    left: 8px;
+    }
+    75% {
+    left: 78px;
+    }
+    100% {
+    left: 72px;
+    }
+}
+
+@keyframes move-left-36 {
+    0% {
+    left: 72px;
+    }
+    75% {
+    left: 2px;
+    }
+    100% {
+    left: 8px;
+    }
+}
+
+.checkbox-wrapper-55 input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+  }
+
+  .checkbox-wrapper-55 *,
+  .checkbox-wrapper-55 ::after,
+  .checkbox-wrapper-55 ::before {
+    box-sizing: border-box;
+  }
+
+  .checkbox-wrapper-55 .rocker {
+    display: inline-block;
+    position: relative;
+    /*
+    SIZE OF SWITCH
+    ==============
+    All sizes are in em - therefore
+    changing the font-size here
+    will change the size of the switch.
+    See .rocker-small below as example.
+    */
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #888;
+    width: 7em;
+    height: 4em;
+    overflow: hidden;
+    border-bottom: 0.5em solid #eee;
+  }
+
+  .checkbox-wrapper-55 .rocker-small {
+    font-size: 0.75em;
+  }
+
+  .checkbox-wrapper-55 .rocker::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    border: 0.5em solid #eee;
+    border-bottom: 0;
+  }
+
+  .checkbox-wrapper-55 .switch-left,
+  .checkbox-wrapper-55 .switch-right {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;
+    width: 3em;
+    transition: 0.2s;
+    user-select: none;
+  }
+
+  .checkbox-wrapper-55 .switch-left {
+    height: 2.4em;
+    width: 2.75em;
+    left: 0.85em;
+    bottom: 0.4em;
+    background-color: #ddd;
+    transform: rotate(15deg) skewX(15deg);
+  }
+
+  .checkbox-wrapper-55 .switch-right {
+    right: 0.5em;
+    bottom: 0;
+    background-color: #bd5757;
+    color: #fff;
+  }
+
+  .checkbox-wrapper-55 .switch-left::before,
+  .checkbox-wrapper-55 .switch-right::before {
+    content: "";
+    position: absolute;
+    width: 0.4em;
+    height: 2.45em;
+    bottom: -0.45em;
+    background-color: #ccc;
+    transform: skewY(-65deg);
+  }
+
+  .checkbox-wrapper-55 .switch-left::before {
+    left: -0.4em;
+  }
+
+  .checkbox-wrapper-55 .switch-right::before {
+    right: -0.375em;
+    background-color: transparent;
+    transform: skewY(65deg);
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left {
+    background-color: #0084d0;
+    color: #fff;
+    bottom: 0px;
+    left: 0.5em;
+    height: 2.5em;
+    width: 3em;
+    transform: rotate(0deg) skewX(0deg);
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left::before {
+    background-color: transparent;
+    width: 3.0833em;
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left + .switch-right {
+    background-color: #ddd;
+    color: #888;
+    bottom: 0.4em;
+    right: 0.8em;
+    height: 2.4em;
+    width: 2.75em;
+    transform: rotate(-15deg) skewX(-15deg);
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left + .switch-right::before {
+    background-color: #ccc;
+  }
+
+  /* Keyboard Users */
+  .checkbox-wrapper-55 input:focus + .switch-left {
+    color: #333;
+  }
+
+  .checkbox-wrapper-55 input:checked:focus + .switch-left {
+    color: #fff;
+  }
+
+  .checkbox-wrapper-55 input:focus + .switch-left + .switch-right {
+    color: #fff;
+  }
+
+  .checkbox-wrapper-55 input:checked:focus + .switch-left + .switch-right {
+    color: #333;
+  }
